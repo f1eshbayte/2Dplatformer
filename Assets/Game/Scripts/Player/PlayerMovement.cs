@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private Transform _groundChecker;
-    [SerializeField] private float _groundCheckRadius = 0.2f;
+    [SerializeField] private float _groundCheckRadius = 0.05f;
 
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
         }
 
-        _animator.SetFloat(Speed, moveInput); // currentSpeed добавть надо
+        _animator.SetFloat(Speed, Mathf.Abs(moveInput));
         AjustableFliping(moveInput);
     }
 
