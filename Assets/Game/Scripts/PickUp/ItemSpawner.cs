@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpSpawner : MonoBehaviour
+public class ItemSpawner : MonoBehaviour
 {
-    [SerializeField] private PickUp _pickUpPrefab;
+    [SerializeField] private Item _itemPrefab;
     [SerializeField] private float _spawnInterval;
     
     private Transform[] _spawnPoints;
-    private PickUp[] _currentPickUps;
+    private Item[] _currentPickUps;
     private void Start()
     {
         Transform[] allChildren = transform.GetComponentsInChildren<Transform>(false);
@@ -19,7 +18,7 @@ public class PickUpSpawner : MonoBehaviour
             _spawnPoints[i - 1] = allChildren[i];
         }
 
-        _currentPickUps = new PickUp[_spawnPoints.Length];
+        _currentPickUps = new Item[_spawnPoints.Length];
         
         for (int i = 0; i < _spawnPoints.Length; i++)
         {
@@ -40,10 +39,10 @@ public class PickUpSpawner : MonoBehaviour
 
     private void SpawnCoin(int index)
     {
-        PickUp coin = Instantiate(_pickUpPrefab, _spawnPoints[index].position, Quaternion.identity);
+        Item coin = Instantiate(_itemPrefab, _spawnPoints[index].position, Quaternion.identity);
         _currentPickUps[index] = coin;
 
-        PickUp pickup = coin.GetComponent<PickUp>();
+        Item pickup = coin.GetComponent<Item>();
         pickup.SetSpawner(this, index);
     }
 }

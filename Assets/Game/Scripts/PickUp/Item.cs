@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    private PickUpSpawner _spawner;
+    private ItemSpawner _spawner;
     private int _spawnIndex;
 
-    public void SetSpawner(PickUpSpawner spawner, int index)
+    public void SetSpawner(ItemSpawner spawner, int index)
     {
         _spawner = spawner;
         _spawnIndex = index;
@@ -13,7 +13,7 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out PlayerMovement player))
+        if (other.TryGetComponent(out PlayerMovement _))
         {
             _spawner.RespawnPickUp(_spawnIndex);
             Destroy(gameObject);

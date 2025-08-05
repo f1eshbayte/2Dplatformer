@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -10,8 +7,9 @@ public class WaypointMovement : MonoBehaviour
     [SerializeField] private float _speed;
 
     private Transform[] _points;
-    private int _currentPoint;
     private SpriteRenderer _spriteRenderer;
+    private int _currentPoint;
+    private readonly float _pointReachedThreshold = 0.05f;
 
     private void Start()
     {
@@ -37,7 +35,7 @@ public class WaypointMovement : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, target.position) < 0.05f)
+        if (Vector3.Distance(transform.position, target.position) < _pointReachedThreshold)
         {
             _currentPoint++;
             if (_currentPoint >= _points.Length)

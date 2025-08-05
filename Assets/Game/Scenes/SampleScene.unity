@@ -3712,7 +3712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2e27eecae9c2b429cf1769285d3040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickUpPrefab: {fileID: 2279084469124666415, guid: d662c37fb468a4044a2d0fa6a36dc685, type: 3}
+  _itemPrefab: {fileID: 2279084469124666415, guid: d662c37fb468a4044a2d0fa6a36dc685, type: 3}
   _spawnInterval: 7
 --- !u!4 &867864356
 Transform:
